@@ -27,17 +27,17 @@ def merge_sort(arrA, arrB):
         if arrAIsLooped and arrBIsLooped:
             break
 
-        if (arrAValue < arrBValue) and arrAIsLooped == False:
+        if (arrAValue < arrBValue) and not arrAIsLooped:
             i += 1
             result.append(arrAValue) 
             continue
 
-        if (arrBValue < arrAValue) and arrBIsLooped == False:
+        if (arrBValue < arrAValue) and not arrBIsLooped:
             j += 1
             result.append(arrBValue)
             continue
 
-        if arrAIsLooped == False and arrBIsLooped == True:
+        if not arrAIsLooped  and  arrBIsLooped:
             nextLoop = i + 1
             nextItem = arrA[nextLoop] if (nextLoop + 1) <= len(arrA) else None
             i += 1
@@ -47,11 +47,11 @@ def merge_sort(arrA, arrB):
             else:
                 result.append(arrAValue)   
         
-        if arrBIsLooped == False and arrAIsLooped == True:
+        if not arrBIsLooped and arrAIsLooped:
             nextLoop = j + 1
             nextItem = arrB[nextLoop] if j + 1 <= len(arrB) else None
             j += 1
-            
+
             if (nextItem):
                 result.append(arrBValue if arrBValue < nextItem else nextItem)
             else:
