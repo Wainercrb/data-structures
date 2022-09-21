@@ -12,7 +12,7 @@
 # Complexity: O(n + m)
 # Time: O(n + m)
 
-def merge_sort(arrA, arrB):
+def merge(arrA, arrB):
     i = 0
     j = 0
     result = []
@@ -49,7 +49,7 @@ def merge_sort(arrA, arrB):
         
         if not arrBIsLooped and arrAIsLooped:
             nextLoop = j + 1
-            nextItem = arrB[nextLoop] if j + 1 <= len(arrB) else None
+            nextItem = arrB[nextLoop] if nextLoop + 1 <= len(arrB) else None
             j += 1
 
             if (nextItem):
@@ -60,4 +60,16 @@ def merge_sort(arrA, arrB):
     return result
 
 
-print(merge_sort([100,200, 400, 500, 600, 700], [1,2,3,5,6]))
+
+def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr
+
+    middle = len(arr) // 2
+    left_arr = merge_sort(arr[:middle])
+    rigth_arr = merge_sort(arr[middle:])
+
+    return merge(left_arr, rigth_arr)
+
+
+print(merge_sort([10,24,76,73, 199]))
