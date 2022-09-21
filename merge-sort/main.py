@@ -9,8 +9,13 @@
 # 3. Join and sort the single items: [1], [2] => [1, 2] && [4], [3] => [3, 4]
 # 4. join and sort the arrays again [1, 2] && [3, 4] => [1, 2, 3, 4]
 
-# Complexity: O(n + m)
-# Time: O(n + m)
+# Best time complexity: O(n log n)
+# Time complexity average: O(n log n)
+# Time complexity worst: O(n log n)
+# Space complexity: O(n)
+
+# Notes: For this algorithm does not care if the data is sorted 
+# or the data length also there is not edge cases
 
 def merge(arrA, arrB):
     i = 0
