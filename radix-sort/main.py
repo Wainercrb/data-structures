@@ -51,8 +51,3 @@ def redux_sort(arr):
 
 
 print(redux_sort([239,345,5467,12,2345,9852]))
-
-
-
-
-
