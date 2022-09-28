@@ -171,10 +171,10 @@ class Singly_linked_list():
         prev_node = None
 
         for _ in range(self.length):
-            next_node = node.next
-            node.next = prev_node
-            prev_node = node
-            node = next_node
+            next_node = node.next # node=2, next=3*   |  node=3, next=4* |  node=4, next=None* |  node=None, next=None*
+            node.next = prev_node # node=1, next=None |  node=2, next=1  |  node=3, next=2     |  node=4, next=3
+            prev_node = node      # node=1, next=None |  node=2, next=1  |  node=3, next=2     |  node=4, next=3
+            node = next_node      # node=2  next=3    |  node=3, next=4  |  node=4, next=None  |  node=None, next=None
 
         return self 
 
@@ -191,17 +191,16 @@ class Singly_linked_list():
 
 
 list = Singly_linked_list()
-list.push('item 1')
-list.push('item 2')
-list.push('item 3')
-list.push('item 4')
-list.push('item 5')
-list.pop()
-list.shift()
-list.unshift('item 6')
-list.set(1, 'item replaced')
-list.insert(1, 'insert #2 position')
-list.remove(1)
-list.reverse()
+list.push('1')
+list.push('2')
+list.push('3')
+list.push('4')
+# list.pop()
+# list.shift()
+# list.unshift('6')
+# list.set(1, 'item replaced')
+# list.insert(1, 'insert #2 position')
+# list.remove(1)
+# list.reverse()
+# print(list.get(2).val)
 list.print_values()
-print(list.get(2).val)
