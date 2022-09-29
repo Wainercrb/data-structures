@@ -23,7 +23,7 @@ class Node():
         self.next = None
 
 
-class Stack():
+class Queue():
     def __init__(self):
         self.first = None
         self.last = None
@@ -65,14 +65,14 @@ class Stack():
             current = current.next
 
 
-stack = Stack()
-print('enqueue 1 to the stack, return: ', stack.enqueue(1))
-print('enqueue 2 to the stack, return: ', stack.enqueue(2))
-print('enqueue 3 to the stack, return: ', stack.enqueue(3))
+queue = Queue()
+print('enqueue 1 to the stack, return: ', queue.enqueue(1))
+print('enqueue 2 to the stack, return: ', queue.enqueue(2))
+print('enqueue 3 to the stack, return: ', queue.enqueue(3))
 print('-------list all values-----------')
-stack.print_all_values()
+queue.print_all_values()
 
 
-print('dequeue item from the stack, return: ', stack.dequeue())
+print('dequeue item from the stack, return: ', queue.dequeue())
 print('-------list all values-----------')
-stack.print_all_values()
+queue.print_all_values()
