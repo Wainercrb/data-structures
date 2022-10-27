@@ -1,4 +1,5 @@
 from utils import print_tree
+from collections import deque
 
 '''Trees'''
 ### Definition ###
@@ -85,12 +86,85 @@ class BinarySearchTree():
                 found = True
         return current if found == True else False
 
+    def BFS(self):
+        '''Breadth First Search'''
+        node = self.root
+        data  = deque([])
+        queue = deque([])
+        queue.append(node)
+
+        while len(queue) > 0:
+            node = queue.popleft()
+            data.append(node.value)
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+
+        return data
+
+    def DFS_pre_order(self):
+        '''Depth First PreOrder:
+        
+        Description: Gets the nodes values from top to bottom
+        '''
+
+        nodes_visited = []
+
+        def traverse(node):
+            nodes_visited.append(node.value)
+            
+            if node.left: traverse(node.left)
+            if node.right: traverse(node.right)
+            
+        traverse(self.root)
+
+        return nodes_visited
+
+    def DFS_post_order(self):
+        '''Depth First PostOrder
+        
+        Description: Gets the nodes values from bottom to top'''
+        data = []
+
+        def traverse(node):
+            if node.left: traverse(node.left)
+            if node.right: traverse(node.right)
+            data.append(node.value)
+        
+        traverse(self.root)
+        
+        return data
+
+    def BFS_in_order(self):
+        '''Depth First Inorder
+        
+        Description: Gets the values from the children's to the root'''
+        data = []
+
+        def traverse(node):
+            if node.left: traverse(node.left)
+            
+            data.append(node.value)
+
+            if node.right: traverse(node.right)
+
+        traverse(self.root)
+
+        return data
+
 
 bst = BinarySearchTree()
 bst.insert(10)
 bst.insert(6)
-bst.insert(4)
-bst.insert(2)
-bst.insert(11)
-print(vars(bst.find(11)))
+bst.insert(15)
+bst.insert(3)
+bst.insert(8)
+bst.insert(10)
+print(bst.BFS())
+print(bst.find(11))
 print_tree(bst.root)  
+print(bst.DFS_pre_order())
+print(bst.DFS_post_order())
+print(bst.BFS_in_order())
+
